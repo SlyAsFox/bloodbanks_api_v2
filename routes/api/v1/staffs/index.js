@@ -50,34 +50,34 @@ router.get('/:position/:gender', asyncHandler(async (req, res) => {
 }));
 
 //post
-router.get('/create', asyncHandler(async (req, res) => {
-    const staff = await Staff.create({
-        clinicId: 1,
-        fullName: faker.name.findName(),
-        position: 'doctor',
-        birth: faker.date.past(10, '2000-01-01'),
-        phone: '+38 063 385 98 77',
-        sex: `male`,
-        address: 'Україна, Вінниця, вул. Пирогова',
-        email: faker.internet.email()
-    });
-
-    res.send({
-        data: staff
-    })
-}));
-
-router.get('/:id', asyncHandler(async (req, res) => {
-    const staff = await Staff.findOne({
-        where: {
-            id: req.params.id
-        }
-    });
-
-    res.send({
-        data: staff
-    })
-}));
+// router.get('/create', asyncHandler(async (req, res) => {
+//     const staff = await Staff.create({
+//         clinicId: 1,
+//         fullName: faker.name.findName(),
+//         position: 'doctor',
+//         birth: faker.date.past(10, '2000-01-01'),
+//         phone: '+38 063 385 98 77',
+//         sex: `male`,
+//         address: 'Україна, Вінниця, вул. Пирогова',
+//         email: faker.internet.email()
+//     });
+//
+//     res.send({
+//         data: staff
+//     })
+// }));
+//
+// router.get('/:id', asyncHandler(async (req, res) => {
+//     const staff = await Staff.findOne({
+//         where: {
+//             id: req.params.id
+//         }
+//     });
+//
+//     res.send({
+//         data: staff
+//     })
+// }));
 
 module.exports = router;
 

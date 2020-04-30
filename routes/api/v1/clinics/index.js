@@ -5,25 +5,7 @@ const { Clinic, Staff, MedicalCheck, BloodRequest } = require('../../../../model
 const faker = require('faker');
 
 router.get('/', asyncHandler(async (req, res) => {
-    const clinics = await Clinic.findAll(
-        {
-            include: [
-                {
-                    model: Staff,
-                    as: 'staff'
-                },
-                {
-                    model: MedicalCheck,
-                    as: 'checks'
-                },
-                {
-                    model: BloodRequest,
-                    as: 'requests',
-
-                }
-            ]
-        }
-    );
+    const clinics = await Clinic.findAll();
 
     res.send(clinics)
 }));
@@ -68,22 +50,22 @@ router.get('/:city/:year', asyncHandler(async (req, res) => {
 }));
 
 //post
-router.get('/create', asyncHandler(async (req, res) => {
-    const clinics = await Clinic.create({
-        fullName: faker.name.findName(),
-        sex: 'male',
-        city: faker.address.city(),
-        birth: faker.date.past(10, '2000-01-01'),
-        // phone: `+38 063 451 42 32`,
-        phone: FakerByFox.phone('ua'),
-        email: faker.internet.email(),
-        password: faker.internet.password(8)
-    });
-
-    res.send({
-        data: clinics
-    })
-}));
+// router.get('/create', asyncHandler(async (req, res) => {
+//     const clinics = await Clinic.create({
+//         fullName: faker.name.findName(),
+//         sex: 'male',
+//         city: faker.address.city(),
+//         birth: faker.date.past(10, '2000-01-01'),
+//         // phone: `+38 063 451 42 32`,
+//         phone: FakerByFox.phone('ua'),
+//         email: faker.internet.email(),
+//         password: faker.internet.password(8)
+//     });
+//
+//     res.send({
+//         data: clinics
+//     })
+// }));
 
 // router.put('/:id', asyncHandler(async (req, res) => {
 //     const article = await Articles.findOne({
@@ -131,11 +113,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
     const clinics = await Clinic.findOne({
         where: {
             id: req.params.id
-        },
-        include: [{
-            model: Staff,
-            as: 'staff'
-        }]
+        }
     });
 
     res.send({

@@ -4,14 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { Donation, BloodBank } = require('../../../../models');
 
 router.get('/', asyncHandler(async (req, res) => {
-    const donations = await Donation.findAll({
-        include: [
-            {
-                model: BloodBank,
-                as: 'blood_bank'
-            }
-        ]
-    });
+    const donations = await Donation.findAll();
 
     res.send(donations)
 }));
