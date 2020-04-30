@@ -2,7 +2,6 @@ const { Router } = require('express');
 const router = new Router();
 const asyncHandler = require('express-async-handler');
 const { Animal, User, MedicalCheck } = require('../../../../models');
-const fakerByFox = require('../../../../FakerByFox');
 const faker = require('faker');
 
 

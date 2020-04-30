@@ -3,7 +3,6 @@ const router = new Router();
 const asyncHandler = require('express-async-handler');
 const { Clinic, Staff, MedicalCheck, BloodRequest } = require('../../../../models');
 const faker = require('faker');
-const FakerByFox = require('../../../../FakerByFox');
 
 router.get('/', asyncHandler(async (req, res) => {
     const clinics = await Clinic.findAll(

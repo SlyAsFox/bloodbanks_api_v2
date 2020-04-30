@@ -3,7 +3,6 @@ const router = new Router();
 const asyncHandler = require('express-async-handler');
 const { User, Animal } = require('../../../../models');
 const faker = require('faker');
-const fakerByFox = require('../../../../FakerByFox');
 
 router.get('/', asyncHandler(async (req, res) => {
     const users = await User.findAll();
